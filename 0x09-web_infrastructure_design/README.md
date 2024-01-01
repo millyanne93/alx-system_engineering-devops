@@ -1,6 +1,7 @@
-##0x09. Web infrastructure design
-###For this project we look at these concepts:
-###DNS
+
+#0x09. Web infrastructure design
+For this project we look at these concepts:
+##DNS
 
 -Learn everything about DNS in cartoon
 -A Records
