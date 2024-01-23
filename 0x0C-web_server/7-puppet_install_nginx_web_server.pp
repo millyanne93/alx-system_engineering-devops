@@ -1,14 +1,14 @@
 # script to install package using puppet
 
-package {'nginx':
+package { 'nginx':
   ensure => installed,
 }
 
 file_line { 'install':
   ensure => 'present',
-  path => '/etc/nginx/sites-enabled/default',
-  after => 'listen 80 default_server;',
-  line => 'rewrite ^/redirect_me https://www.github.com/millyanne93 permanent;',
+  path   => '/etc/nginx/sites-enabled/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.github.com/millyanne93 permanent;',
 }
 
 file { '/var/www/html/index.html':
@@ -16,6 +16,6 @@ file { '/var/www/html/index.html':
 }
 
 service { 'nginx':
-  ensure => running,
+  ensure  => running,
   require => Package['nginx'],
 }
