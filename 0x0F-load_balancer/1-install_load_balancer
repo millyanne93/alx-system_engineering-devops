@@ -1,4 +1,5 @@
-# Configure HAProxy to send traffic to web-01 and web-02 servers
+#!/usr/bin/env bash 
+#Configure HAProxy to send traffic to web-01 and web-02 servers
 # Distribute requests using a roundrobin algorithm
 # Make sure that HAProxy can be managed via an init script
 
