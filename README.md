@@ -1,1 +1,1 @@
-My first readme
+Welcome to System Engineering and DevOps repository, where I learn how to automate infrastructure, streamline deployments, and optimize system performance. Explore collection of scripts, configurations, and tools to enhance development and operations workflows.
