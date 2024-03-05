@@ -1,6 +1,10 @@
 #Fixes bad ""pphp" extensions to "php" in "wp-settings.php".
 
-exec { 'fix-wordpress':
-  command     => 'sed -i s/pphp/php/g /var/www/html/wp-settings.php',
-  path        => '/usr/local/bin/:/bin/'
+$target_file = '/var/www/html/wp-settings.php'
+
+#Fix WordPress configuration by replacing line containing "phpp" with "php"
+
+exec { 'fix_wordpress_config':
+  command => "sed -i 's/phpp/php/g' ${target_file}",
+  path    => ['/bin','/usr/bin']
 }
