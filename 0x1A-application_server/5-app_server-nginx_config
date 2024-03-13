@@ -1,0 +1,51 @@
+# Configures Nginx to serve AirBnB_clone_v4 Web Dynamic content
+# Gunicorn instance serves web_dynamic/2-hbnb.py on port 5003
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    # Root directory for static files
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name 54.237.16.17
+
+    add_header X-Served-By 451827-web-01;
+    # Serve static files from /data/web_static/current/ under /hbnb_static route
+    location /hbnb_static {
+        alias /data/web_static/current/;
+
+    location = /airnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+    }
+
+    # Proxy requests to /api/ to process on port 5002
+    location /api/ {
+        proxy_pass http://127.0.0.1:5002/api;
+    }
+    # Configure /2-hbnb route of AirBnB_clone_v4 as root location
+    location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
+
+    # Serve static content for AirBnB_clone_v4
+    location /static {
+        alias web_dynamic/static/;
+    }
+
+    # Default location block for other requests
+    location / {
+        try_files $uri $uri/ =404;
+
+    location /redirect_me {
+                return 301 https://www.github.com/millyanne93;
+    error_page 404 /404.html;
+    location /404 {
+      root /var/www/html;
+      internal;
+    }
+}
