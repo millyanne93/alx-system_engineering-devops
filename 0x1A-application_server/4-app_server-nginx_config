@@ -10,7 +10,7 @@ server {
                 internal;
         }
 
-    server_name 54.237.16.17
+    server_name 54.237.16.17;
 
     add_header X-Served-By 451827-web-01;
 
